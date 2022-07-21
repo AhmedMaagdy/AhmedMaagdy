@@ -1,0 +1,14 @@
+vlib work
+vlog  spi.v dpr_async.v spi_wrapper.v spi_tb.v                 +cover -covercells
+vsim -voptargs=+acc work.spi_tb             -cover
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/clk
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/MOSI
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/rst_n
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/SS_n
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/rx_valid
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/rx_data
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/tx_valid
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/tx_data
+add wave -position insertpoint  \sim:/spi_tb/dut/s1/MISO
+coverage save spi_tb.ucdb -onexit
+run -all
